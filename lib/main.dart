@@ -1,10 +1,10 @@
 void main() {
-  calculateReachTime(double distance, double speed) {
-    return distance / speed;
+  isVowelOrConsonant(string) {
+    if (string is! String) return "Invalid Input";
+    var vowels = ['a', 'e', 'i', 'o', 'u'];
+    return vowels.contains(string.toLowerCase()) ? 'Vowel' : 'Consonant';
   }
 
-  double distance = 23;
-  double speed = 40;
-  var reachTime = calculateReachTime(distance, speed);
-  print(reachTime);
+  print(isVowelOrConsonant('a'));
+  print(isVowelOrConsonant('v'));
 }
