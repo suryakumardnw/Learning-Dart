@@ -1,7 +1,11 @@
 void main() {
-  sumOfTenNaturalNumbers(int number) {
-    return (number * (number + 1) ~/ 2);
+  isPrimeNumber(int number) {
+    if (number <= 1) return false;
+    for (var i = 2; i * i <= number; i++) {
+      if (number % i == 0) return false;
+    }
+    return true;
   }
 
-  print(sumOfTenNaturalNumbers(10));
+  print(isPrimeNumber(29));
 }
