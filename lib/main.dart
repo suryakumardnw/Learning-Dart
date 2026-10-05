@@ -1,14 +1,8 @@
 void main() {
-  convertStringToIntOrDouble(String string) {
-    try {
-      var parsedStr = string.contains('.')
-          ? double.parse(string)
-          : int.parse(string);
-      print(parsedStr);
-    } catch (e) {
-      print(e);
-    }
+  removeWhiteSpaces(String string) {
+    return string.trim();
   }
 
-  convertStringToIntOrDouble('10');
+  var text = removeWhiteSpaces('   Hey hello!    ');
+  print(text);
 }
