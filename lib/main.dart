@@ -1,8 +1,10 @@
 void main() {
-  removeWhiteSpaces(String string) {
-    return string.trim();
+  calculateReachTime(double distance, double speed) {
+    return distance / speed;
   }
 
-  var text = removeWhiteSpaces('   Hey hello!    ');
-  print(text);
+  double distance = 23;
+  double speed = 40;
+  var reachTime = calculateReachTime(distance, speed);
+  print(reachTime);
 }
