@@ -1,10 +1,5 @@
 void main() {
-  printNumsWhichAreNotDivisibleByFive() {
-    for (var i = 1; i <= 100; i++) {
-      if (i % 5 == 0) continue;
-      print(i);
-    }
+  for (var i = 1; i <= 10; i++) {
+    print(i);
   }
-
-  printNumsWhichAreNotDivisibleByFive();
 }
