@@ -1,15 +1,7 @@
 void main() {
-  int number = -23;
-  bool isNegativeNumber(int num) {
-    return num.isNegative ? true : false;
+  sumOfTenNaturalNumbers(int number) {
+    return (number * (number + 1) ~/ 2);
   }
 
-  switch (number) {
-    case int number when number == 0:
-      print('Zero');
-    case int number when !isNegativeNumber(number):
-      print('Positive');
-    case int number when isNegativeNumber(number):
-      print('Negative');
-  }
+  print(sumOfTenNaturalNumbers(10));
 }
