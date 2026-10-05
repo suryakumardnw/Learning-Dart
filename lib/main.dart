@@ -1,8 +1,14 @@
 void main() {
-  factorialOfNumber(int number) {
-    if (number == 0) return 1;
-    return number * factorialOfNumber(number - 1);
+  printTables(int n) {
+    int times = 1;
+    while (times <= n) {
+      for (var i = 1; i <= 10; i++) {
+        print("$times X $i = ${times * i}");
+      }
+      times++;
+    }
+    ;
   }
 
-  print(factorialOfNumber(5));
+  printTables(10);
 }
