@@ -1,14 +1,14 @@
+import 'dart:io';
+
 void main() {
-  printTables(int n) {
-    int times = 1;
-    while (times <= n) {
-      for (var i = 1; i <= 10; i++) {
-        print("$times X $i = ${times * i}");
+  displayRightAngleTriangle(int num) {
+    for (var i = 1; i <= num; i++) {
+      for (var j = 1; j <= i; j++) {
+        stdout.write('$j ');
       }
-      times++;
+      print(' ');
     }
-    ;
   }
 
-  printTables(10);
+  displayRightAngleTriangle(5);
 }
