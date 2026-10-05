@@ -1,5 +1,10 @@
 void main() {
-  var listOfIntegers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  listOfIntegers.removeWhere((integer) => integer.isEven);
-  print(listOfIntegers);
+  printNumsWhichAreNotDivisibleByFive() {
+    for (var i = 1; i <= 100; i++) {
+      if (i % 5 == 0) continue;
+      print(i);
+    }
+  }
+
+  printNumsWhichAreNotDivisibleByFive();
 }
