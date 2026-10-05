@@ -1,7 +1,9 @@
 void main() {
-  List<int> listOfIntegers = [2, 3, 4, 5];
-  listOfIntegers.add(6);
-  listOfIntegers.removeLast();
-  var newList = listOfIntegers.map((e) => e * 2);
-  print(newList);
+  var obj = {"name": 'Surya', "age": 24};
+
+  obj["name"] = "kumar";
+  var name = obj["name"];
+  obj.putIfAbsent("country", () => "India");
+  print(name);
+  print(obj);
 }
