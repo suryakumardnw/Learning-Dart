@@ -1,18 +1,5 @@
 void main() {
-  var names = [
-    "Naresh",
-    "Balaji",
-    "Surya",
-    "Abishek",
-    "Sanjay",
-    "Arjun",
-    "Ram",
-    "Nazeer",
-    "Karthi",
-    "Merlin",
-  ];
-  names.sort();
-  print(names);
-  names.sort((a, b) => b.toLowerCase().compareTo(a.toLowerCase()));
-  print(names);
+  var listOfIntegers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  listOfIntegers.removeWhere((integer) => integer.isEven);
+  print(listOfIntegers);
 }
