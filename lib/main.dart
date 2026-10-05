@@ -1,10 +1,7 @@
 void main() {
-  isVowelOrConsonant(string) {
-    if (string is! String) return "Invalid Input";
-    var vowels = ['a', 'e', 'i', 'o', 'u'];
-    return vowels.contains(string.toLowerCase()) ? 'Vowel' : 'Consonant';
-  }
-
-  print(isVowelOrConsonant('a'));
-  print(isVowelOrConsonant('v'));
+  List<int> listOfIntegers = [2, 3, 4, 5];
+  listOfIntegers.add(6);
+  listOfIntegers.removeLast();
+  var newList = listOfIntegers.map((e) => e * 2);
+  print(newList);
 }
