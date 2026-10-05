@@ -1,11 +1,8 @@
 void main() {
-  isPrimeNumber(int number) {
-    if (number <= 1) return false;
-    for (var i = 2; i * i <= number; i++) {
-      if (number % i == 0) return false;
-    }
-    return true;
+  factorialOfNumber(int number) {
+    if (number == 0) return 1;
+    return number * factorialOfNumber(number - 1);
   }
 
-  print(isPrimeNumber(29));
+  print(factorialOfNumber(5));
 }
