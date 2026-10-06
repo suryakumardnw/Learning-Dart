@@ -1,10 +1,11 @@
-import 'package:surya_learning_dart/scratch/user.dart';
+import 'package:surya_learning_dart/scratch/animal.dart';
 
 void main() {
-  var newUser = User('Surya', "9940180342");
-  print(newUser.name);
-  newUser.updateMobile = "9940180342";
-  print(newUser.mobile);
+  var tommy = Dog("tommy", "rottu nai");
+  var timmy = Cat("timmy", "rotty poonai");
+
+  tommy.sound();
+  timmy.sound();
 }
 
-// Create a User class with private variables and public getters/setters.
+// Instantiate objects of the User class and demonstrate encapsulation.
