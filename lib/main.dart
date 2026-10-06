@@ -1,11 +1,7 @@
-import 'dart:math';
-
 void main() {
-  print(maxNumber(5, 2, 10));
+  print(calculateArea(length: 20, width: 25));
 }
 
-maxNumber(int a, int b, int c) {
-  var maxNum = [a, b, c];
-  maxNum.sort((a, b) => a.compareTo(b));
-  return maxNum.last;
+int calculateArea({int length = 1, int width = 1}) {
+  return length * width;
 }
