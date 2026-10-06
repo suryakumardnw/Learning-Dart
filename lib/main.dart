@@ -1,20 +1,16 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 void main() {
-  Bottle bottle = Bottle.create();
-  bottle.open();
+  // return runApp(MaterialApp(home: MyApp()));
+  return runApp(CupertinoApp(home: MyApp()));
 }
 
-abstract class Bottle {
-  factory Bottle.create() {
-    return CokeBottle();
-  }
-  void open();
-}
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-class CokeBottle implements Bottle {
   @override
-  open() {
-    print("Coke bottle is Opened !");
+  Widget build(BuildContext context) {
+    return Scaffold(body: Center(child: Text('Hello Flutter!')));
   }
 }
-
-// Create an interface called Bottle and add a method to it called open(). Create a class called CokeBottle and implement the Bottle and print the message “Coke bottle is opened”. Add a factory constructor to Bottle and return the object of CokeBottle. Instantiate CokeBottle using the factory constructor and call the open() on the object.
