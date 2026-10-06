@@ -1,21 +1,17 @@
 void main() {
-  print(calculate(2, 5, add));
-  print(calculate(2, 3, multiply));
-  print(calculate(20, 5, divide));
+  var myHouse = House(1, "Surya's House", 25000);
+  var nareshHouse = House(2, "Naresh's Hosue", 50000);
+  var balajiHouse = House(3, "Balaji's House", 550000);
+  var Houses = [myHouse, nareshHouse, balajiHouse];
+  print(Houses);
 }
 
-int add(int a, int b) {
-  return a + b;
+class House {
+  final int id;
+  final String name;
+  final int price;
+
+  House(this.id, this.name, this.price);
 }
 
-int multiply(int a, int b) {
-  return a * b;
-}
-
-int divide(int a, int b) {
-  return a ~/ b;
-}
-
-int calculate(int a, int b, int Function(int, int) add) {
-  return add(a, b);
-}
+// Write a dart program to create a class House with properties [id, name, price]. Create a constructor of it and create 3 objects of it. Add them to the list and print all details.
