@@ -1,22 +1,11 @@
+import 'dart:math';
+
 void main() {
-  print(add(5, 5));
-  print(subtract(8, 5));
-  print(multiply(4, 4));
-  print(divide(100, 25));
+  print(maxNumber(5, 2, 10));
 }
 
-int add(int a, int b) {
-  return a + b;
-}
-
-int subtract(int a, int b) {
-  return a - b;
-}
-
-int multiply(int a, int b) {
-  return a * b;
-}
-
-double divide(int a, int b) {
-  return a / b;
+maxNumber(int a, int b, int c) {
+  var maxNum = [a, b, c];
+  maxNum.sort((a, b) => a.compareTo(b));
+  return maxNum.last;
 }
