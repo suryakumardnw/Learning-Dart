@@ -1,20 +1,22 @@
 void main() {
-  divideANumber(int a, int b) {
-    try {
-      return a ~/ b;
-    } catch (e) {
-      throw CustomException("Suya");
-    }
-  }
-
-  print(divideANumber(10, 5));
-  print(divideANumber(5, 0));
+  print(add(5, 5));
+  print(subtract(8, 5));
+  print(multiply(4, 4));
+  print(divide(100, 25));
 }
 
-class CustomException implements Exception {
-  final String message;
-  CustomException([this.message = 'Custom Request Timed Out!']);
+int add(int a, int b) {
+  return a + b;
+}
 
-  @override
-  String toString() => 'Custom Exception $message';
+int subtract(int a, int b) {
+  return a - b;
+}
+
+int multiply(int a, int b) {
+  return a * b;
+}
+
+double divide(int a, int b) {
+  return a / b;
 }
