@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:surya_learning_dart/theme/app_theme.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
@@ -12,11 +13,13 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FilledButton.tonal(
+    final theme = AppTheme.of(context);
+
+    return FilledButton(
       onPressed: onPressed,
       style: FilledButton.styleFrom(
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
+        backgroundColor: theme.primaryColor,
+        foregroundColor: theme.onPrimaryColor,
       ),
       child: Text(label),
     );

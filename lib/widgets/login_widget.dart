@@ -82,7 +82,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             children: [
               Text("Don't have an account? ", style: bodyMedium),
               TextButton(
-                onPressed: () => context.push(AppRoutes.register),
+                onPressed: () => context.pushNamed(AppRoutes.registerName),
                 style: _linkButtonStyle(context),
                 child: Text(
                   'Register',

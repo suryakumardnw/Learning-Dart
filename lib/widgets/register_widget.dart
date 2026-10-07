@@ -87,7 +87,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               children: [
                 Text('Already have an account? ', style: bodyMedium),
                 TextButton(
-                  onPressed: () => context.go(AppRoutes.login),
+                  onPressed: () => context.goNamed(AppRoutes.loginName),
                   style: _linkButtonStyle(context),
                   child: Text(
                     'Login',

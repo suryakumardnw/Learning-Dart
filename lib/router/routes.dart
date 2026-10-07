@@ -1,4 +1,7 @@
 abstract final class AppRoutes {
-  static const login = '/';
-  static const register = '/register';
+  static const loginPath = '/';
+  static const registerPath = '/register';
+
+  static const loginName = 'login';
+  static const registerName = 'register';
 }
