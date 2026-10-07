@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:surya_learning_dart/router/app_router.dart';
 
 void main() {
-  // return runApp(MaterialApp(home: MyApp()));
-  return runApp(CupertinoApp(home: MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,6 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Hello Flutter!')));
+    return MaterialApp.router(
+      title: 'Surya Learning Dart',
+      routerConfig: appRouter,
+    );
   }
 }
