@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// A styled text input with a leading [icon] and placeholder text.
+///
+/// Wrap common [TextField] configuration so forms across the app
+/// stay visually consistent.
 class AppInput extends StatelessWidget {
   const AppInput({
     super.key,
@@ -11,10 +15,13 @@ class AppInput extends StatelessWidget {
     this.keyboardType,
   });
 
+  /// Icon shown before the input field.
   final IconData icon;
+  /// Hint text displayed when the field is empty.
   final String placeholder;
   final TextEditingController? controller;
   final ValueChanged<String>? onChanged;
+  /// Whether to hide the entered text (passwords).
   final bool obscureText;
   final TextInputType? keyboardType;
 
