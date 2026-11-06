@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:surya_learning_dart/router/routes.dart';
+import 'package:surya_learning_dart/utils/validators.dart';
 import 'package:surya_learning_dart/widgets/input.dart';
 import 'package:surya_learning_dart/widgets/primary-button.dart';
 
@@ -25,6 +26,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   }
 
   void onRegisterPressed() {
+    final nameError = Validators.name(_nameController.text);
+    final emailError = Validators.email(_emailController.text);
+    final passwordError = Validators.password(_passwordController.text);
+
+    if (nameError != null || emailError != null || passwordError != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(nameError ?? emailError ?? passwordError!)),
+      );
+      return;
+    }
+
     final name = _nameController.text;
     final email = _emailController.text;
     final password = _passwordController.text;
