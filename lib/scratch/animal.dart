@@ -10,7 +10,7 @@ class Animal {
 }
 
 class Dog extends Animal {
-  new(super._name, super._breed);
+  Dog(super._name, super._breed);
 
   @override
   sound() {
@@ -19,7 +19,7 @@ class Dog extends Animal {
 }
 
 class Cat extends Animal {
-  new(super._name, super._breed);
+  Dog(super._name, super._breed);
 
   @override
   sound() {
