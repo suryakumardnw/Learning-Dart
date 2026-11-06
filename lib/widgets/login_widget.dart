@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:surya_learning_dart/router/routes.dart';
+import 'package:surya_learning_dart/services/auth_service.dart';
 import 'package:surya_learning_dart/widgets/input.dart';
 import 'package:surya_learning_dart/widgets/primary-button.dart';
 
@@ -22,8 +23,12 @@ class _LoginWidgetState extends State<LoginWidget> {
     super.dispose();
   }
 
-  void onPressed() {
-    print("Yeah I am Pressed!");
+  Future<void> onPressed() async {
+    final email = _emailController.text;
+    final password = _passwordController.text;
+
+    final success = await AuthService.login(email, password);
+    debugPrint('Login success: $success');
   }
 
   ButtonStyle _linkButtonStyle(BuildContext context) {
