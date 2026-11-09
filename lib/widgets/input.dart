@@ -7,6 +7,7 @@ class AppInput extends StatelessWidget {
     required this.placeholder,
     this.controller,
     this.onChanged,
+    this.validator,
     this.obscureText = false,
     this.keyboardType,
   });
@@ -15,14 +16,16 @@ class AppInput extends StatelessWidget {
   final String placeholder;
   final TextEditingController? controller;
   final ValueChanged<String>? onChanged;
+  final FormFieldValidator<String>? validator;
   final bool obscureText;
   final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
       onChanged: onChanged,
+      validator: validator,
       obscureText: obscureText,
       keyboardType: keyboardType,
       decoration: InputDecoration(
