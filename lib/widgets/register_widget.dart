@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:surya_learning_dart/router/routes.dart';
+import 'package:surya_learning_dart/utils/password_visibility.dart';
 import 'package:surya_learning_dart/widgets/input.dart';
 import 'package:surya_learning_dart/widgets/primary-button.dart';
 
@@ -73,11 +74,24 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               keyboardType: TextInputType.emailAddress,
             ),
             const SizedBox(height: 16),
-            AppInput(
-              icon: Icons.lock_outline,
-              placeholder: 'Password',
-              controller: _passwordController,
-              obscureText: true,
+            ValueListenableBuilder<bool>(
+              valueListenable: passwordVisible,
+              builder: (context, visible, _) {
+                return AppInput(
+                  icon: Icons.lock_outline,
+                  placeholder: 'Password',
+                  controller: _passwordController,
+                  obscureText: !visible,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      visible ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      passwordVisible.value = !passwordVisible.value;
+                    },
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 28),
             PrimaryButton(label: 'Register', onPressed: onRegisterPressed),
