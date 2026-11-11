@@ -82,7 +82,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () => context.pushNamed(AppRoutes.forgotPasswordName),
               style: _linkButtonStyle(context),
               child: const Text('Forgot password?'),
             ),
