@@ -6,22 +6,30 @@ class PrimaryButton extends StatelessWidget {
     super.key,
     required this.label,
     required this.onPressed,
+    this.isLoading = false,
   });
 
   final String label;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
 
     return FilledButton(
-      onPressed: onPressed,
+      onPressed: isLoading ? null : onPressed,
       style: FilledButton.styleFrom(
         backgroundColor: theme.primaryColor,
         foregroundColor: theme.onPrimaryColor,
       ),
-      child: Text(label),
+      child: isLoading
+          ? const SizedBox(
+              height: 20,
+              width: 20,
+              child: CircularProgressIndicator(strokeWidth: 2),
+            )
+          : Text(label),
     );
   }
 }

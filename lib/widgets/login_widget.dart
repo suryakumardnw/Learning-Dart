@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:surya_learning_dart/router/routes.dart';
+import 'package:surya_learning_dart/services/auth_service.dart';
 import 'package:surya_learning_dart/utils/password_visibility.dart';
+import 'package:surya_learning_dart/utils/validators.dart';
 import 'package:surya_learning_dart/widgets/input.dart';
 import 'package:surya_learning_dart/widgets/primary-button.dart';
 
@@ -15,6 +17,7 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -23,8 +26,32 @@ class _LoginWidgetState extends State<LoginWidget> {
     super.dispose();
   }
 
-  void onPressed() {
-    print("Yeah I am Pressed!");
+  Future<void> onPressed() async {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text;
+    final validationError =
+        Validators.email(email) ?? Validators.password(password);
+
+    if (validationError != null) {
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(SnackBar(content: Text(validationError)));
+      return;
+    }
+
+    setState(() => _isLoading = true);
+    try {
+      await authService.signIn(email: email, password: password);
+      if (!mounted) return;
+      context.goNamed(AppRoutes.homeName);
+    } on AuthException catch (error) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(SnackBar(content: Text(error.message)));
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
+    }
   }
 
   ButtonStyle _linkButtonStyle(BuildContext context) {
@@ -88,7 +115,11 @@ class _LoginWidgetState extends State<LoginWidget> {
             ),
           ),
           const SizedBox(height: 16),
-          PrimaryButton(label: "Login", onPressed: onPressed),
+          PrimaryButton(
+            label: 'Login',
+            onPressed: onPressed,
+            isLoading: _isLoading,
+          ),
           const SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

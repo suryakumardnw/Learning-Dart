@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:surya_learning_dart/router/routes.dart';
+import 'package:surya_learning_dart/services/auth_service.dart';
 import 'package:surya_learning_dart/utils/password_visibility.dart';
+import 'package:surya_learning_dart/utils/validators.dart';
 import 'package:surya_learning_dart/widgets/input.dart';
 import 'package:surya_learning_dart/widgets/primary-button.dart';
 
@@ -16,6 +18,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -25,11 +28,35 @@ class _RegisterWidgetState extends State<RegisterWidget> {
     super.dispose();
   }
 
-  void onRegisterPressed() {
-    final name = _nameController.text;
-    final email = _emailController.text;
+  Future<void> onRegisterPressed() async {
+    final name = _nameController.text.trim();
+    final email = _emailController.text.trim();
     final password = _passwordController.text;
-    debugPrint('Register: $name, $email, $password');
+    final validationError =
+        Validators.name(name) ??
+        Validators.email(email) ??
+        Validators.password(password);
+
+    if (validationError != null) {
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(SnackBar(content: Text(validationError)));
+      return;
+    }
+
+    setState(() => _isLoading = true);
+    try {
+      await authService.register(name: name, email: email, password: password);
+      if (!mounted) return;
+      context.goNamed(AppRoutes.homeName);
+    } on AuthException catch (error) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(SnackBar(content: Text(error.message)));
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
+    }
   }
 
   ButtonStyle _linkButtonStyle(BuildContext context) {
@@ -94,7 +121,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               },
             ),
             const SizedBox(height: 28),
-            PrimaryButton(label: 'Register', onPressed: onRegisterPressed),
+            PrimaryButton(
+              label: 'Register',
+              onPressed: onRegisterPressed,
+              isLoading: _isLoading,
+            ),
             const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
